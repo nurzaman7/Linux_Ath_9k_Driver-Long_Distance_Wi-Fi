@@ -1,3 +1,63 @@
-# Atheros-9k-driver_-Long-distance-Wi-Fi-
+# Linux Ath9k Long-Distance Wi-Fi Driver (2C MAC Research Port)
 
-With the growing network size and application domains, these are increasing tremendously. In this case, a low latency and high capacity backbone network is essential. WiFi-based Long Distance (WiLD) networks have proven to be a suitable solution for extending connectivity towards rural areas. However, due to the long distance links connected by directional antennas, high propagation delays and interference exist. An efficient TDMA-based MAC protocol for multi-hop WiLD networks called 2C has improved end-to-end performance using an interference-aware node coloring algorithm. In this work, we have implemented 2C MAC protocol over real-life testbed. The implementation incorporates different features of 2C such as tight synchronization over multi-hop and 2C color scheduling based data transmission. Using spatial reuse mechanism of 2C, the implemented testbed shows better performances in terms of saturation throughput and end-to-end delay than other relevant MAC protocols. We also analyze the device to cloud latency and energy consumption in an IoT environment. The note files constains details about the implementation process.
+This repository packages source artifacts and operational scripts for a modified Atheros `ath9k/mac80211` stack used in long-distance Wi-Fi (WiLD) experiments with a TDMA-style 2C MAC approach.
+
+It is now organized as a reproducible, portfolio-ready research codebase:
+- Extracted source files are versioned under `src/`.
+- Operational scripts are parameterized under `scripts/`.
+- Original archives and papers are preserved under `archive/` and `docs/`.
+
+## Repository Structure
+
+- `src/driver_2c/`: extracted 2C-modified mac80211 source files (`main.c`, `rx.c`, `tx.c`, headers)
+- `src/tools/sendraw/`: raw packet sender utility
+- `src/tools/sendwlan/`: wlan packet sender utility
+- `scripts/`: install/copy/configure helper scripts
+- `docs/`: reference PDFs and project usage notes
+- `archive/`: original compressed artifacts kept for provenance
+
+## Quick Start
+
+1. Build or obtain your target kernel modules (`*.ko`) for your OpenWrt/Linux target.
+2. Copy modules into a local folder:
+
+```bash
+./scripts/copy_modules.sh <compat_wireless_build_root> ./build/modules
+```
+
+3. Install modules on target (requires root):
+
+```bash
+sudo ./scripts/install_modules.sh ./build/modules
+```
+
+4. Put interface into monitor mode (example):
+
+```bash
+sudo ./scripts/configure_monitor.sh wlan0 12 36
+```
+
+5. Build user-space packet tools:
+
+```bash
+make -C src/tools/sendraw
+make -C src/tools/sendwlan
+```
+
+See detailed notes in [`docs/USAGE.md`](docs/USAGE.md).
+
+## Compatibility Notes
+
+- This code was originally developed around old `compat-wireless`/OpenWrt-era kernels.
+- You should expect integration work for modern kernels.
+- These scripts are intended for controlled research/testbed environments.
+
+## Safety
+
+- Module load/unload and monitor mode commands can interrupt connectivity.
+- Run only on dedicated test devices.
+- Validate local regulations and spectrum usage constraints before field experiments.
+
+## Legacy References
+
+Original research notes and manuals are in `docs/`. Original archives remain in `archive/`.

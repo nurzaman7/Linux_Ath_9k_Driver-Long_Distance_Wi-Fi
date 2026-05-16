@@ -1,0 +1,8 @@
+# Build outputs
+build/
+*.o
+*.ko
+*.tar
+
+# macOS
+.DS_Store
