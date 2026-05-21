@@ -64,7 +64,17 @@ Original research notes and manuals are in `docs/`. Original archives remain in 
 
 ## Citation
 
-If you use this repository, please cite:
+N. Ahmed and M. I. Hussain,  
+*"Implementation and Evaluation of a Tightly-Synchronized WiFi-based Long Distance Network for Rural Area Connectivity."*
+
+```bibtex
+@article{ahmed_wild_2c,
+  author  = {Ahmed, Nurzaman and Hussain, Md. Iftekhar},
+  title   = {Implementation and Evaluation of a Tightly-Synchronized WiFi-based Long Distance Network for Rural Area Connectivity},
+  journal = {Technical Report},
+  year    = {2024}
+}
+```
 
 N. Ahmed, D. De and I. Hussain, "Internet of Things (IoT) for Smart Precision Agriculture and Farming in Rural Areas," in IEEE Internet of Things Journal, vol. 5, no. 6, pp. 4890-4899, Dec. 2018, doi: 10.1109/JIOT.2018.2879579.
 keywords: {Agriculture;Smart devices;Internet of Things;Wireless sensor networks;Delays;Logic gates;Routing;Cloud computing;fog computing;Internet of Things (IoT);smart agriculture;WiFi-based long distance (WiLD) network},
